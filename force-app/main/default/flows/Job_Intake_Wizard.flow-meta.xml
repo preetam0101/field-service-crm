@@ -71,6 +71,9 @@ Automatically sets the initial status to New upon submission.</description>
         <label>Create Job Record</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <faultConnector>
+            <targetReference>jobIntakeFailureAlert</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>Client_Name__c</field>
             <value>
@@ -239,6 +242,30 @@ Automatically sets the initial status to New upon submission.</description>
             <fieldType>InputField</fieldType>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>jobIntakeFailureAlert</name>
+        <label>job Intake Failure Alert</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>fault_path_Job_Intake</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 14px; font-family: courier;&quot;&gt;Something went wrong while creating your job. Please try again or contact your admin.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
                     <stringValue>top</stringValue>
