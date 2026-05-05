@@ -1,0 +1,48 @@
+<template>
+    <lightning-card title="Job Status Timeline" icon-name="standard:timesheet">
+        
+        <div class="slds-m-around_medium">
+            <template if:true={job}>
+                
+                <!-- Job Name -->
+                <h2 class="slds-text-heading_small slds-m-bottom_medium">
+                    {job.Name}
+                </h2>
+
+                <!-- Timeline Steps -->
+                <div class="timeline-container">
+                    <template for:each={steps} for:item="step">
+                        <div key={step.label} class="timeline-step">
+                            
+                            <!-- Circle -->
+                            <div class={step.circleClass}>
+                                <template if:true={step.isCompleted}>
+                                    ✓
+                                </template>
+                            </div>
+                            
+                            <!-- Label -->
+                            <div class="step-label">{step.label}</div>
+                            
+                            <!-- Connector Line -->
+                            <template if:false={step.isLast}>
+                                <div class={step.lineClass}></div>
+                            </template>
+
+                        </div>
+                    </template>
+                </div>
+
+            </template>
+
+            <!-- Loading State -->
+            <template if:false={job}>
+                <lightning-spinner 
+                    alternative-text="Loading" 
+                    size="small">
+                </lightning-spinner>
+            </template>
+        </div>
+
+    </lightning-card>
+</template>
