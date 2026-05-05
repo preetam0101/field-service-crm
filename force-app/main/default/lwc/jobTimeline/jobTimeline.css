@@ -1,0 +1,59 @@
+.timeline-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.timeline-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    flex: 1;
+}
+
+/* Default Circle */
+.step-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    font-size: 16px;
+    z-index: 1;
+}
+
+/* Completed Circle */
+.step-circle-completed {
+    background-color: #0070d2;
+}
+
+/* Default Line */
+.step-line {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    width: 100%;
+    height: 4px;
+    background-color: #e0e0e0;
+    z-index: 0;
+}
+
+/* Completed Line */
+.step-line-completed {
+    background-color: #0070d2;
+}
+
+/* Step Label */
+.step-label {
+    margin-top: 8px;
+    font-size: 12px;
+    text-align: center;
+    color: #333;
+    font-weight: 500;
+}
