@@ -1,0 +1,45 @@
+<template>
+    <lightning-card title="Job Dashboard" icon-name="standard:work_order">
+        
+        <!-- Filter Buttons -->
+        <div class="slds-m-around_medium">
+            <lightning-button-group>
+                <lightning-button 
+                    label="All" 
+                    onclick={handleFilterAll}
+                    variant={allVariant}>
+                </lightning-button>
+                <lightning-button 
+                    label="Open" 
+                    onclick={handleFilterOpen}
+                    variant={openVariant}>
+                </lightning-button>
+                <lightning-button 
+                    label="Completed" 
+                    onclick={handleFilterCompleted}
+                    variant={completedVariant}>
+                </lightning-button>
+            </lightning-button-group>
+        </div>
+
+        <!-- Job Table -->
+        <div class="slds-m-around_medium">
+            <template if:true={filteredJobs.length}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={filteredJobs}
+                    columns={columns}
+                    hide-checkbox-column>
+                </lightning-datatable>
+            </template>
+
+            <!-- No Records Message -->
+            <template if:false={filteredJobs.length}>
+                <div class="slds-align_absolute-center slds-m-top_medium">
+                    <p>No jobs found.</p>
+                </div>
+            </template>
+        </div>
+
+    </lightning-card>
+</template>
