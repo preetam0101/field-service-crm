@@ -1,9 +1,19 @@
+/**
+ * @description Batch class to process overdue jobs daily
+ * Finds all jobs past their scheduled date and not completed
+ * Updates their status to Overdue and sends summary email
+ * @author Preetam Parmar
+ */
 public class BatchOverdueJobs implements Database.Batchable<sObject>, Database.Stateful {
     
-    // Track count of overdue jobs across all batches
+    // Track total overdue jobs across all batch chunks
     private Integer overdueCount = 0;
     private String adminEmail = 'parmarpreetam143@gmail.com';
-    
+    /**
+     * @description Start method - queries all overdue jobs
+     * @param bc BatchableContext
+     * @return QueryLocator with overdue jobs
+     */
     // Step 1 - START: Query all jobs to process
     public Database.QueryLocator start(Database.BatchableContext bc) {
         return Database.getQueryLocator([
@@ -13,7 +23,11 @@ public class BatchOverdueJobs implements Database.Batchable<sObject>, Database.S
             AND Status__c != 'Completed'
         ]);
     }
-    
+    /**
+     * @description Execute method - processes each chunk of 200 jobs
+     * @param bc BatchableContext
+     * @param jobs List of Job records in current chunk
+     */
     // Step 2 - EXECUTE: Process each chunk of records
     public void execute(Database.BatchableContext bc, List<Job__c> jobs) {
         
@@ -23,13 +37,18 @@ public class BatchOverdueJobs implements Database.Batchable<sObject>, Database.S
             job.Status__c = 'Overdue';
             jobsToUpdate.add(job);
         }
-        
+
+                // Only update if list is not empty
         if(!jobsToUpdate.isEmpty()) {
             update jobsToUpdate;
             overdueCount += jobsToUpdate.size();
         }
     }
-    
+    /**
+     * @description Finish method - sends summary email to admin
+     * Runs once after all chunks are processed
+     * @param bc BatchableContext
+     */
     // Step 3 - FINISH: Send summary email
     public void finish(Database.BatchableContext bc) {
         

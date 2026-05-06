@@ -1,5 +1,15 @@
+/**
+ * @description Apex controller for Job Dashboard LWC
+ * Provides job data to the jobDashboard component
+ * @author Preetam Parmar
+ */
 public with sharing class JobDashboardController {
     
+    /**
+     * @description Fetches all Job records ordered by Scheduled Date
+     * cacheable=true enables client side caching for better performance
+     * @return List of Job__c records
+     */
     @AuraEnabled(cacheable=true)
     public static List<Job__c> getJobs() {
         return [
