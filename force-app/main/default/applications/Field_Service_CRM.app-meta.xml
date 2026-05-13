@@ -29,5 +29,5 @@
     <tabs>standard-report</tabs>
     <tabs>standard-Dashboard</tabs>
     <uiType>Lightning</uiType>
-    <utilityBar>Field_Service_CRM_UtilityBar</utilityBar>
+    
 </CustomApplication>
