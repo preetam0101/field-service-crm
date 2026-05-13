@@ -206,6 +206,25 @@ sf org open --target-org FieldServiceCRM
 
 ---
 
+---
+
+## ⚙️ CI/CD Pipeline
+
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
+
+This project uses **GitHub Actions** for automated deployment to a target Salesforce org using JWT Bearer Flow authentication.
+
+### How it works:
+Every push to `main` branch automatically deploys metadata to the target org — no manual deployment needed!
+
+### Post-Deployment Manual Steps:
+After deployment, the following need to be configured manually in the target org:
+
+1. **App Visibility** → Assign `Field Service CRM` app to System Administrator profile in App Manager
+2. **Tab Visibility** → Set all custom tabs to `Default On` in Profile settings
+3. **Reports & Dashboards** → Recreate manually as they contain org-specific IDs that cannot be migrated via metadata deployment
+
+> This is standard behavior in Salesforce CI/CD pipelines — org-specific metadata like Reports, Dashboards, and User configurations always require manual post-deployment setup.
 ## 🧑‍💻 Author
 
 **Preetam Parmar**  
