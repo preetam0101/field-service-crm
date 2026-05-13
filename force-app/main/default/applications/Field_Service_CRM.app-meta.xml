@@ -22,7 +22,7 @@
     <label>Field Service CRM</label>
     <navType>Standard</navType>
     <tabs>standard-home</tabs>
-    <tabs>Job__c</tabs>
+   
     <tabs>Technician__c</tabs>
     <tabs>Job_Assignnment__c</tabs>
     <tabs>Service_Report__c</tabs>
