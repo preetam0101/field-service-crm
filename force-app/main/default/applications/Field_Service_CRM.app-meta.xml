@@ -30,5 +30,4 @@
     <tabs>standard-Dashboard</tabs>
     <tabs>File_Review__c</tabs>
     <uiType>Lightning</uiType>
-    <utilityBar>Field_Service_CRM_UtilityBar</utilityBar>
 </CustomApplication>
